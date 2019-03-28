@@ -1,0 +1,17 @@
+db:
+  image: neerajagarwal7/carapp-database:1.0
+  container_name: Doc-comp-mysql-container
+  environment:
+   MYSQL_ROOT_PASSWORD: mindtree@12
+  ports:
+          - "8082:3306"
+  volumes:
+          - ./database:/var/lib/mysql
+
+web:
+  image: neerajagarwal7/carapp:1.1
+  container_name: Doc-comp-CarApp-container
+  ports:
+          - "8081:8080"
+  links:
+          - db
